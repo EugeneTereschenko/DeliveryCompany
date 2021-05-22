@@ -22,7 +22,7 @@ public class RatedeliveryDAO {
     private static final String SQL_FIND_ALL_RATES = "SELECT * FROM ratedeliver";
     private static final String SQL_FIND_ALL_CITYSCOORDINATES = "SELECT * FROM cityscoordinates";
 
-    private static final String SQL_SELECT_RATES_BY_WEIGHT = "SELECT bycity, byregion, byukraine from ratedeliver where weight > ? and weight < ?;";
+    private static final String SQL_SELECT_RATES_BY_WEIGHT = "SELECT * from ratedeliver where distancefrom < ? and distanceto >= ? and weight >= ? limit 1;";
 
     private static final Logger logger = LogManager.getLogger(RatedeliveryDAO.class);
 
@@ -44,7 +44,7 @@ public class RatedeliveryDAO {
                 //book.setUpdate_at(result.getDate("update-at"));
             }
         } catch (SQLException e) {
-            logger.info("error find user" + e);
+            logger.info("error find rate" + e);
         }
         return rate;
 
@@ -65,7 +65,7 @@ public class RatedeliveryDAO {
 
             }
         } catch (SQLException e) {
-            logger.info("error find user" + e);
+            logger.info("error find coordinate" + e);
         }
         return cityscoordinate;
 
@@ -134,26 +134,30 @@ public class RatedeliveryDAO {
         return cityscoordinates;
     }
 
+    //SQL_SELECT_RATES_BY_WEIGHT
 
 
-    public Rate checkRate(double weight) throws ClassNotFoundException {
+    public Rate checkRate(int distanceFrom, int distanceTo , double weight) throws ClassNotFoundException {
 
         Rate rate = null;
 
         Class.forName("com.mysql.cj.jdbc.Driver");
 
-        try (Connection con = DriverManager.getConnection(URL); PreparedStatement prstatement = con.prepareStatement(SQL_FIND_RATE_BY_WEIGHT)) {
-            prstatement.setDouble(1, weight);
+        try (Connection con = DriverManager.getConnection(URL); PreparedStatement prstatement = con.prepareStatement(SQL_SELECT_RATES_BY_WEIGHT)) {
+            prstatement.setInt(1, distanceFrom);
+            prstatement.setInt(2, distanceTo);
+            prstatement.setDouble(3, weight);
 
             rate = getRateParam(prstatement);
 
         } catch (SQLException e) {
-            logger.info("error find user" + e);
+            logger.info("error find rate" + e);
         }
 
         return rate;
 
     }
+
 
     public List<Rate> findAllRates() throws ClassNotFoundException {
 

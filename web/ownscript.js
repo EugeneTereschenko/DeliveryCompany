@@ -15,6 +15,15 @@ function getCookie(cname) {
 }
 
 $(document).ready(function(){
+    // view user
+
+    $("#idusersitemy").click(function () {
+        console.log("test");
+        window.location.replace("http://localhost:8080/showusers");
+    });
+
+
+
 
     // shop cart
     console.log("TEst");

@@ -41,14 +41,14 @@ create table if not exists admin_users (
 create table if not exists ratedeliver (
                                      id integer not null auto_increment,
                                      weight DOUBLE,
-                                     bycity integer,
-                                     byregion integer,
-                                     byukraine integer,
-                                     surcharge integer,
+                                     distancefrom integer,
+                                     distanceto integer,
+                                     cost double,
                                      created_at datetime,
                                      update_at datetime,
                                      primary key (id)
 );
+
 
 
 create table if not exists cards (

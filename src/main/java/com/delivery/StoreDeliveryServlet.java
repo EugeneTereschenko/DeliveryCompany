@@ -111,7 +111,7 @@ public class StoreDeliveryServlet extends HttpServlet {
         json.put("cartid", cartid);
         json.put("distanceBetween", (int) rateDeliveryCount.countRate(temp));
         json.put("time", "00:00");
-        json.put("shippingprice", (int) rateDeliveryCount.shippingprice);
+        json.put("shippingprice", (int) rateDeliveryCount.getShippingprice());
         json.put("namecityFrom", rateDeliveryCount.citysFrom.getName());
         json.put("namecityTo", rateDeliveryCount.citysTo.getName());
 

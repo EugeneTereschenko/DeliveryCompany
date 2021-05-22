@@ -105,4 +105,32 @@
     <url-pattern>/createpdfdoc</url-pattern>
     </servlet-mapping>
 
+
+
+    <servlet>
+        <servlet-name>UserViewServlet</servlet-name>
+        <servlet-class>com.delivery.UserViewServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>UserViewServlet</servlet-name>
+        <url-pattern>/insertuser</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>UserViewServlet</servlet-name>
+        <url-pattern>/showoneuser</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>UserViewServlet</servlet-name>
+        <url-pattern>/updateuser</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>UserViewServlet</servlet-name>
+        <url-pattern>/deleteuser</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>UserViewServlet</servlet-name>
+        <url-pattern>/showusers</url-pattern>
+    </servlet-mapping>
+
 </web-app>

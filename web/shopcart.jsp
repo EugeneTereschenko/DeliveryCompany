@@ -1,6 +1,10 @@
 <%@ page import="com.delivery.entity.Cart" %>
 <%@ page import="java.util.List" %>
-<%@ page import="com.delivery.count.RateDeliveryCount" %><%--
+<%@ page import="com.delivery.count.RateDeliveryCount" %>
+<%@ page import="java.util.Properties" %>
+<%@ page import="java.io.InputStream" %>
+<%@ page import="java.io.InputStreamReader" %>
+<%@ page import="java.nio.charset.StandardCharsets" %><%--
   Created by IntelliJ IDEA.
   User: yevhen
   Date: 19.05.21
@@ -19,43 +23,43 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 </head>
 <body>
-<%--<script>
-    $(function() {
 
+<%
 
-        $(".pdfreport").click(function () {
+    String setLocal = (String) session.getAttribute("idlocal");
+    String fileproper = null;
+    if (setLocal.equals("ru")){
+        fileproper = "app_ru.properties";
+    } else {
+        fileproper = "app_en.properties";
+    }
 
-             alert(this.id);
-             console.log("test");
+    Properties properties = new Properties();
+    InputStream stream = Thread.currentThread().getContextClassLoader()
+            .getResourceAsStream(fileproper);
+    InputStreamReader reader = new InputStreamReader(stream, StandardCharsets.UTF_8);
+    properties.load(reader);
 
+    String exit = properties.getProperty("fieldExit");
+    String usersitemy = properties.getProperty("fieldUser");
+%>
 
-            var url = "http://localhost:8080/DeliveryCompany/createpdfdoc?cartid=" + this.id;
-
-            //window.open.replace("http://localhost:8080/bookstore/createpdfdoc?cartid=" + );
-            window.open(url, '_blank');
-        });
-
-        $("#id_button").click(function () {
-            // alert("help me");
-            window.location.replace("http://localhost:8080/DeliveryCompany/logout");
-
-        });
-
-        $("#id_proceed_payment").click(function () {
-            //document.cookie =  "cartid=" + data + ";";
-            document.cookie =  "cartproc=1;";
-                window.location.replace("http://localhost:8080/DeliveryCompany/showdelivery");
-        });
-
-    });
-</script>--%>
 <div class="container mt-5 mb-5">
     <div class="d-flex justify-content-center row">
         <div class="col-md-10">
             <div class="p-2">
                 <h4>Shopping cart</h4>
                 <div class="d-flex flex-row align-items-center pull-right"><span class="mr-1">Sort by:</span><span class="mr-1 font-weight-bold">Price</span><i class="fa fa-angle-down"></i><i class="icon-user"></i>
-                    <span class="caret"><p><%=session.getAttribute("username")%></p></span><button type="button" class="btn btn-sm control-group card panel-shadow panel panel-info " id="id_button">exit</button></div>
+                    <span class="caret"><p><%=session.getAttribute("username")%></p></span><button type="button" class="btn btn-sm control-group card panel-shadow panel panel-info " id="id_button">exit</button>
+                    <%
+                    String username = (String) session.getAttribute("username");
+                    String role = (String) session.getAttribute("roleid");
+                        if (role.equals("administrator")) {
+                            out.println("<input type=\"button\" class=\"btn btn-primary newclass list-group-item-action btn-sm\" id=\"idusersitemy\" value=\"" + usersitemy + "\" />");
+                        }
+
+                    %>
+                </div>
             </div>
             <div id='TextBoxesGroup'>
                  <div id="TextBoxDiv1">

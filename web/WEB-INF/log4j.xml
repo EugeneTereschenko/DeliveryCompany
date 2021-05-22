@@ -4,22 +4,27 @@
         <Console name="Console" target="SYSTEM_OUT">
             <PatternLayout pattern="%d{HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n"/>
         </Console>
-        <File name="File1" fileName="/home/yevhen/Java_Connect/DeliveryCompany/log/outputStoreDeliveryServlet.log">
+        <File name="File1" fileName="/home/yevhen/Java_Connect/DeliveryCompanyTemp/DeliveryCompany/outputStoreDeliveryServlet.log">
             <PatternLayout>
                 <pattern>%d %p %C{1.} [%t] %m%n</pattern>
             </PatternLayout>
         </File>
-        <File name="File2" fileName="/home/yevhen/Java_Connect/DeliveryCompany/log/outputDeliveryCount.log">
+        <File name="File2" fileName="/home/yevhen/Java_Connect/DeliveryCompanyTemp/DeliveryCompany/outputDeliveryCount.log">
             <PatternLayout>
                 <pattern>%d %p %C{1.} [%t] %m%n</pattern>
             </PatternLayout>
         </File>
-        <File name="File3" fileName="/home/yevhen/Java_Connect/DeliveryCompany/log/outputAuthenticationServlet.log">
+        <File name="File3" fileName="/home/yevhen/Java_Connect/DeliveryCompanyTemp/DeliveryCompany/outputAuthenticationServlet.log">
             <PatternLayout>
                 <pattern>%d %p %C{1.} [%t] %m%n</pattern>
             </PatternLayout>
         </File>
-        <File name="File4" fileName="/home/yevhen/Java_Connect/DeliveryCompany/log/outputCheckOutServlet.log">
+        <File name="File4" fileName="/home/yevhen/Java_Connect/DeliveryCompanyTemp/DeliveryCompany/outputCheckOutServlet.log">
+            <PatternLayout>
+                <pattern>%d %p %C{1.} [%t] %m%n</pattern>
+            </PatternLayout>
+        </File>
+        <File name="File5" fileName="/home/yevhen/Java_Connect/DeliveryCompanyTemp/DeliveryCompany/outputUserViewServlet.log">
             <PatternLayout>
                 <pattern>%d %p %C{1.} [%t] %m%n</pattern>
             </PatternLayout>
@@ -37,9 +42,12 @@
         </Logger>
         <Logger name="com.delivery.AuthenticationServlet" level="debug" additivity="false">
             <AppenderRef ref="File3"/>
-        </Logger>AddToStoreServlet
+        </Logger>
         <Logger name="com.delivery.CheckOutServlet" level="debug" additivity="false">
             <AppenderRef ref="File4"/>
+        </Logger>
+        <Logger name="com.delivery.UserViewServlet" level="debug" additivity="false">
+            <AppenderRef ref="File5"/>
         </Logger>
     </Loggers>
 </Configuration>

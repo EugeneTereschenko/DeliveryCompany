@@ -30,161 +30,6 @@
 
   </head>
   <body>
-<%--
-  <script>
-
-
-
-     $(function() {
-
-
-
-         $("#id_brought_count").click(function () {
-
-
-             var delivery = {};
-
-             var userId = getCookie("userid");
-             var checkoutstep = "confirm";
-
-             var cityFrom = $('#citeFrom').val();
-             var cityTo = $('#citeTo').val();
-             var typeOfdeli = $('#TypeTo').val();
-             var count = $('#count').val();
-             var weight = $('#weight').val();
-             var length = $('#length').val();
-             var width = $('#width').val();
-             var height = $('#height').val();
-
-             delivery.userId = userId;
-             delivery.checkoutstep = checkoutstep;
-             delivery.cityFrom = cityFrom;
-             delivery.cityTo = cityTo;
-             delivery.typeOfdeli = typeOfdeli;
-             delivery.count = count;
-             delivery.weight = weight;
-             delivery.length = length;
-             delivery.width = width;
-             delivery.height = height;
-
-
-             console.log(delivery);
-
-
-
-             $.ajax({
-                 url: '/DeliveryCompany/putdelivery',
-                 type: 'POST',
-                 data: 'delivery=' + JSON.stringify(delivery),
-                 dataType: 'JSON',
-                 beforeSend: function (x) {
-                     if (x && x.overrideMimeType) {
-                         x.overrideMimeType("application/j-son;charset=UTF-8");
-                     }
-                 },
-                 success: function (data) {
-                     // alert('success'+data);
-                     console.log(data);
-                     // $("#sentstatus_edit").html(data.deliveryprice.toString());
-                     //$("#sentstatus_edit").html(data.toString());
-
-
-                     $('<div/>',{'id':'TextBoxDiv' + data.cartid })
-                         .html($('<div class="d-flex flex-row justify-content-between align-items-center p-2 bg-white mt-4 px-3 rounded">')
-                             .html($('<div class="d-flex flex-column align-items-center product-details">')
-                                 .html($('<span class="font-weight-bold">' + data.namecityFrom + ' ' + data.namecityTo + '</span>'))
-                                    .append($('<div class="d-flex flex-row product-desc">')
-                                        .html($('<div class="size mr-1">')
-                                            .html('<span class="text-grey">Distance:</span><span class="font-weight-bold">' + data.distanceBetween + 'km</span>'))
-                                            .append($('<div class="color">')
-                                                .html('<span class="text-grey">Time:</span><span class="font-weight-bold">17:00-23:00</span>')
-                                        )))
-                                   .append($('<div class="d-flex flex-row align-items-center qty">').html('<button id=" + data.cartid + " class="btn btn-default iterdowncost" ><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-left-fill" viewBox="0 0 16 16">\n' +
-                                       '  <path d="m3.86 8.753 5.482 4.796c.646.566 1.658.106 1.658-.753V3.204a1 1 0 0 0-1.659-.753l-5.48 4.796a1 1 0 0 0 0 1.506z"/>\n' +
-                                       '</svg></button>'))
-                                 .append($('<div class="d-flex flex-row align-items-center qty">').html('<h5 class="text-grey mt-1 mr-1 ml-1">' + count + '</h5>'))
-                                 .append($('<div class="d-flex flex-row align-items-center qty">').html('<button id=" + data.cartid + " class="btn btn-default itercost" ><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-right-fill" viewBox="0 0 16 16">\n' +
-                                     '  <path d="m12.14 8.753-5.482 4.796c-.646.566-1.658.106-1.658-.753V3.204a1 1 0 0 1 1.659-.753l5.48 4.796a1 1 0 0 1 0 1.506z"/>\n' +
-                                     '</svg></button>'))
-                                 .append($('<div>').html('<h5 class="text-grey">' + data.shippingprice + '$</h5>'))
-                                 .append($('<div class="d-flex align-items-center">').html('<button id=' + data.cartid + ' class="btn btn-primary iterdeletecost" rel="tooltip" ><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">\n' +
-                     '                    <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/>\n' +
-                     '                    <path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"/>\n' +
-                     '                </svg></button>'))
-                             )
-                         .appendTo( '#TextBoxesGroup' )
-
-
-
-                 },
-                 failure: function (data) {
-                     console.log(data);
-                     // alert(data);
-                   //  $("#sentstatus_edit").html("error");
-                 }
-             });
-
-
-         });
-
-
-       $("#id_price_count").click(function () {
-
-           var delivery = {};
-
-            var cityFrom = $('#citeFrom').val();
-            var cityTo = $('#citeTo').val();
-            var typeOfdeli = $('#TypeTo').val();
-            var count = $('#count').val();
-            var weight = $('#weight').val();
-            var length = $('#length').val();
-            var width = $('#width').val();
-            var height = $('#height').val();
-
-
-            delivery.cityFrom = cityFrom;
-            delivery.cityTo = cityTo;
-            delivery.typeOfdeli = typeOfdeli;
-            delivery.count = count;
-            delivery.weight = weight;
-            delivery.length = length;
-            delivery.width = width;
-            delivery.height = height;
-
-
-            console.log(delivery);
-
-
-
-           $.ajax({
-               url: '/DeliveryCompany/countdelivery',
-               type: 'POST',
-               data: 'delivery=' + JSON.stringify(delivery),
-               dataType: 'JSON',
-               beforeSend: function (x) {
-                   if (x && x.overrideMimeType) {
-                       x.overrideMimeType("application/j-son;charset=UTF-8");
-                   }
-               },
-               success: function (data) {
-                   // alert('success'+data);
-                   console.log(data);
-                  // $("#sentstatus_edit").html(data.deliveryprice.toString());
-                   $("#sentstatus_edit").html(data.toString());
-
-               },
-               failure: function (data) {
-                   console.log(data);
-                   // alert(data);
-                   $("#sentstatus_edit").html("error");
-               }
-           });
-
-
-       });
-     });
-  </script>--%>
-
 
   <div class="container">
     <div class="row">
@@ -193,6 +38,13 @@
 
 
             <%
+
+
+          javax.servlet.http.Cookie cookie = new javax.servlet.http.Cookie("cartproc", "0");
+
+          response.addCookie(cookie);
+
+
           int cartproc = 0;
           Cookie[] cookies = request.getCookies();
           for (int i = 0; i < cookies.length; i++) {
