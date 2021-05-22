@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="WARN">
+    <Appenders>
+        <Console name="Console" target="SYSTEM_OUT">
+            <PatternLayout pattern="%d{HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n"/>
+        </Console>
+        <File name="File1" fileName="/home/yevhen/Java_Connect/DeliveryCompany/log/outputStoreDeliveryServlet.log">
+            <PatternLayout>
+                <pattern>%d %p %C{1.} [%t] %m%n</pattern>
+            </PatternLayout>
+        </File>
+        <File name="File2" fileName="/home/yevhen/Java_Connect/DeliveryCompany/log/outputDeliveryCount.log">
+            <PatternLayout>
+                <pattern>%d %p %C{1.} [%t] %m%n</pattern>
+            </PatternLayout>
+        </File>
+        <File name="File3" fileName="/home/yevhen/Java_Connect/DeliveryCompany/log/outputAuthenticationServlet.log">
+            <PatternLayout>
+                <pattern>%d %p %C{1.} [%t] %m%n</pattern>
+            </PatternLayout>
+        </File>
+        <File name="File4" fileName="/home/yevhen/Java_Connect/DeliveryCompany/log/outputCheckOutServlet.log">
+            <PatternLayout>
+                <pattern>%d %p %C{1.} [%t] %m%n</pattern>
+            </PatternLayout>
+        </File>
+    </Appenders>
+    <Loggers>
+        <Root level="debug">
+            <AppenderRef ref="Console"/>
+        </Root>
+        <Logger name="com.delivery.StoreDeliveryServlet" level="debug" additivity="false">
+            <AppenderRef ref="File1"/>
+        </Logger>
+        <Logger name="com.delivery.count.RateDeliveryCount" level="debug" additivity="false">
+            <AppenderRef ref="File2"/>
+        </Logger>
+        <Logger name="com.delivery.AuthenticationServlet" level="debug" additivity="false">
+            <AppenderRef ref="File3"/>
+        </Logger>AddToStoreServlet
+        <Logger name="com.delivery.CheckOutServlet" level="debug" additivity="false">
+            <AppenderRef ref="File4"/>
+        </Logger>
+    </Loggers>
+</Configuration>
