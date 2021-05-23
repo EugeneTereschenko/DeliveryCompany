@@ -55,7 +55,7 @@
                     String username = (String) session.getAttribute("username");
                     String role = (String) session.getAttribute("roleid");
                         if (role.equals("administrator")) {
-                            out.println("<input type=\"button\" class=\"btn btn-primary newclass list-group-item-action btn-sm\" id=\"idusersitemy\" value=\"" + usersitemy + "\" />");
+                            out.println("<input type=\"button\" class=\"btn btn-primary btn-light btn-sm\" id=\"idusersitemy\" value=\"" + usersitemy + "\" />");
                         }
 
                     %>

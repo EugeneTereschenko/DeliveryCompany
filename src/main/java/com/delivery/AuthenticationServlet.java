@@ -214,25 +214,13 @@ public class AuthenticationServlet extends HttpServlet {
 
         if (session != null) {
 
-            /*session.removeAttribute("books");
-            session.removeAttribute("idlocal");*/
+
             session.removeAttribute("userid");
             session.removeAttribute("username");
-           /* session.removeAttribute("treemapbooks");
-            session.removeAttribute("viewcart");
-            session.removeAttribute("viewcartusers");
-            session.removeAttribute("viewtreemaptotaldeliveries");
-            session.removeAttribute("totalProductPrice");
-            session.removeAttribute("orderProductPrice");
-            session.removeAttribute("totalPrice");*/
-            //session.removeAttribute("imageiduser");
 
-            //session.getAttribute("user");
 
             ServletContext servletContext = getServletContext();
-            System.out.println(getServletInfo().toString());
-            System.out.println(request.toString());
-            System.out.println(response.toString());
+
 
             RequestDispatcher dispatcher = request.getRequestDispatcher("index.jsp");
             dispatcher.forward(request, response);

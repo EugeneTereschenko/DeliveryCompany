@@ -50,12 +50,11 @@ public class AddressDAO {
                 address.setUser_id(result.getInt("user_id"));
                 address.setDelivery_id(result.getInt("delivery_id"));
             } else {
-                System.out.println("Address not valid");
 
                 return null;
             }
         } catch (SQLException | NullPointerException e) {
-            System.out.println("error find user address" + e);
+            logger.info("error find user address" + e);
         }
         return address;
 
@@ -79,12 +78,12 @@ public class AddressDAO {
             prstatement.setInt(1, addressId);
             address = getAddressParam(prstatement);
             if (address == null) {
-                System.out.println("address is null");
+                logger.info("address is null");
                 con.rollback();
                 return null;
             }
         } catch (SQLException e) {
-            System.out.println("error find user address" + e);
+            logger.info("error find user address" + e);
         }
         return address;
     }
@@ -108,12 +107,12 @@ public class AddressDAO {
             prstatement.setInt(1, addressId);
             address = getAddressParam(prstatement);
             if (address == null) {
-                System.out.println("address is null");
+                logger.info("address is null");
                 con.rollback();
                 return null;
             }
         } catch (SQLException e) {
-            System.out.println("error find user address" + e);
+            logger.info("error find user address" + e);
         }
         return address;
     }
@@ -156,7 +155,7 @@ public class AddressDAO {
             }
             return address;
         } catch (SQLException e) {
-            System.out.println(e);
+            logger.info(e);
         }
 
         return null;
@@ -180,7 +179,7 @@ public class AddressDAO {
             return prstatement.executeUpdate() > 0;
 
         } catch (SQLException e) {
-            System.out.println(e);
+            logger.info(e);
         }
 
         return null;
@@ -206,7 +205,7 @@ public class AddressDAO {
                 return true;
             }
         } catch (SQLException e) {
-            System.out.println(e);
+            logger.info(e);
         }
         return false;
     }

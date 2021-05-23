@@ -4,14 +4,14 @@ import java.util.Date;
 
 public class Card {
 
-    public String card_number;
-    public String name;
-    public String image;
-    public int cvv;
-    public String expiration_month_year;
-    public int user_id;
-    public Date created_at;
-    public Date update_at;
+    private String card_number;
+    private String name;
+    private String image;
+    private int cvv;
+    private String expiration_month_year;
+    private int user_id;
+    private Date created_at;
+    private Date update_at;
 
     public String getExpiration_month_year() {
         return expiration_month_year;

@@ -4,17 +4,17 @@ import java.util.Date;
 
 public class User {
 
-    public int id;
-    public String email;
-    public String encrypted_password;
-    public Date reset_password_token;
-    public Date reset_password_sent_at;
-    public String remember_created_at;
-    public int sign_in_count;
-    public String current_sign_in_at;
-    public String name;
-    public String uid;
-    public String image;
+    private int id;
+    private String email;
+    private String encrypted_password;
+    private Date reset_password_token;
+    private Date reset_password_sent_at;
+    private String remember_created_at;
+    private int sign_in_count;
+    private String current_sign_in_at;
+    private String name;
+    private String uid;
+    private String image;
 
 
     public int getId() {

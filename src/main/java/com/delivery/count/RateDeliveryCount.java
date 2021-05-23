@@ -17,7 +17,6 @@ import java.util.Date;
 public class RateDeliveryCount {
 
 
-
     private static final long serialVersionUID = 1L;
     private static final Logger logger = LogManager.getLogger(RateDeliveryCount.class);
 
@@ -41,8 +40,7 @@ public class RateDeliveryCount {
     private int height;
 
 
-
-    public RateDeliveryCount(){
+    public RateDeliveryCount() {
 
     }
 
@@ -135,7 +133,7 @@ public class RateDeliveryCount {
         this.height = height;
     }
 
-    public static double distance(double lat1, double lon1, double lat2, double lon2){
+    public static double distance(double lat1, double lon1, double lat2, double lon2) {
         lon1 = Math.toRadians(lon1);
         lon2 = Math.toRadians(lon2);
         lat1 = Math.toRadians(lat1);
@@ -159,7 +157,7 @@ public class RateDeliveryCount {
 
     }
 
-    public double countRate(String temp){
+    public double countRate(String temp) {
 
         try {
             JSONObject myJsonObject = new JSONObject(temp);
@@ -174,7 +172,7 @@ public class RateDeliveryCount {
             citysFrom.setId(myJsonObject.getInt("cityFrom"));
             citysTo.setId(myJsonObject.getInt("cityTo"));
             typeOfde = myJsonObject.getString("typeOfdeli");
-            count =  myJsonObject.getInt("count");
+            count = myJsonObject.getInt("count");
             weight = myJsonObject.getInt("weight");
             length = myJsonObject.getInt("length");
             width = myJsonObject.getInt("width");
@@ -188,15 +186,28 @@ public class RateDeliveryCount {
             logger.info(citysFrom.getLongitude());
 
 
-
             logger.info(citysTo.getLatitude());
             logger.info(citysTo.getLongitude());
 
-            System.out.println(citysFrom.getLatitude() + " " + citysTo.getLatitude()  + " " + citysFrom.getLongitude() + " " + citysTo.getLongitude());
+            logger.info(citysFrom.getLatitude() + " " + citysTo.getLatitude() + " " + citysFrom.getLongitude() + " " + citysTo.getLongitude());
 
             distanceBetween = distance(citysFrom.getLatitude(), citysFrom.getLongitude(), citysTo.getLatitude(), citysTo.getLongitude());
 
-            return distanceBetween;
+            rate = new Rate();
+
+            rate = ratedeliveryDAO.checkRate((int) distanceBetween, (int) distanceBetween, weight);
+
+            totalprice = (int) rate.getCost() * distanceBetween;
+            shippingprice = totalprice + 100;
+
+
+            logger.info("rate.getCost() " + rate.getCost() + " distance " + distanceBetween + " totalprice " + totalprice + " shippingprice " + shippingprice);
+
+            logger.info(distanceBetween);
+            logger.info(totalprice);
+            logger.info(shippingprice);
+
+            return (int) shippingprice;
 
         } catch (JSONException | ClassNotFoundException e) {
             e.printStackTrace();
@@ -204,9 +215,7 @@ public class RateDeliveryCount {
         return 0;
     }
 
-
-
-    public int putRate(String temp){
+    public int putRate(String temp) {
 
 
         try {
@@ -228,15 +237,13 @@ public class RateDeliveryCount {
             distanceBetween = (int) distance(citysFrom.getLatitude(), citysFrom.getLongitude(), citysTo.getLatitude(), citysTo.getLongitude());
 
 
-
-
             userId = myJsonObject.getString("userId");
 
 
             checkoutstep = myJsonObject.getString("checkoutstep");
 
             typeOfde = myJsonObject.getString("typeOfdeli");
-            count =  myJsonObject.getInt("count");
+            count = myJsonObject.getInt("count");
             weight = myJsonObject.getInt("weight");
             length = myJsonObject.getInt("length");
             width = myJsonObject.getInt("width");
@@ -244,17 +251,30 @@ public class RateDeliveryCount {
 
             rate = ratedeliveryDAO.checkRate((int) distanceBetween, (int) distanceBetween, weight);
 
-            totalprice = (int) rate.getCost();
+            totalprice = (int) rate.getCost() * distanceBetween;
             shippingprice = totalprice + 100;
-
 
 
             CartDAO cartDAO = new CartDAO();
 
-            Cart cart = new Cart();
 
-            cart = cartDAO.insertCart(Integer.parseInt(userId), totalprice, shippingprice, checkoutstep, citysFrom.getName(), citysTo.getName(), typeOfde, count, weight, length, width, height, (int)distanceBetween);
+            Cart cart = Cart.newBuilder()
+                    .addUser_id(Integer.parseInt(userId))
+                    .addTotal_price((int) totalprice)
+                    .addShipping_price((int) shippingprice)
+                    .addCheckout_step(checkoutstep)
+                    .addCityFrom(citysFrom.getName())
+                    .addCityTo(citysTo.getName())
+                    .addTypeDeliver(typeOfde)
+                    .addCount(count)
+                    .addWeight(weight)
+                    .addLenght(length)
+                    .addWidth(width)
+                    .addHeight(height)
+                    .addDistance((int) distanceBetween)
+                    .build();
 
+            cart = cartDAO.insertCart(cart);
 
             return cart.getId();
 

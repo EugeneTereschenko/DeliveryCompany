@@ -14,38 +14,6 @@
     <script type="text/javascript" src="ownscript.js"></script>
 </head>
 <body>
-<%--<script>
-    $(function() {
-
-        $("#id_delivery_login").click(function () {
-            var text1 = $('#username').val();
-            var text2 = $('#password').val();
-            var text3 = $('#lang').val();
-
-            $.ajax({
-                url: '/DeliveryCompany/authentication',
-                type: 'POST',
-                data: {"login": text1, "pass": text2, "lang": text3},
-                success: function (data) {
-                    console.log(data);
-
-                    // alert(data);
-
-                    if (data != "stop") {
-                        window.location.replace("http://localhost:8080/DeliveryCompany/showdelivery");
-                    }
-
-                },
-                failure: function (data) {
-
-                }
-            });
-
-
-
-        });
-    });
-</script>--%>
 <table align = "center"><tr><td>
     <fieldset>
         <div id="legend">

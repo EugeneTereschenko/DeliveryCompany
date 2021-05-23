@@ -215,7 +215,6 @@ public class UserDAO{
      */
 
     public Boolean updatecurrentimageUser(String image, int id) throws ClassNotFoundException {
-        //System.out.println(" dd " + image + " dd " + id + " rr ");
 
         Class.forName("com.mysql.cj.jdbc.Driver");
         try (Connection con = DriverManager.getConnection(URL); PreparedStatement prstatement = con.prepareStatement(SQL_UPDATE_USER_CURRENT_IMAGE)) {

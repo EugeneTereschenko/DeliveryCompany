@@ -3,23 +3,121 @@ package com.delivery.entity;
 import java.util.Date;
 
 public class Cart {
-   int id;
-   double total_price;
-   int created_at;
-   int update_at;
-   int user_id;
-   double shipping_price;
-   int coupon;
-   String checkout_step;
-   String cityFrom;
-   String cityTo;
-   String typeDeliver;
-   int count;
-   int weight;
-   int length;
-   int width;
-   int height;
-   int distance;
+    private int id;
+    private double total_price;
+    private int created_at;
+    private int update_at;
+    private int user_id;
+    private double shipping_price;
+    private int coupon;
+    private String checkout_step;
+    private String cityFrom;
+    private String cityTo;
+    private String typeDeliver;
+    private int count;
+    private int weight;
+    private int length;
+    private int width;
+    private int height;
+    private int distance;
+
+
+    public static Builder newBuilder() {
+        return new Cart.Builder();
+    }
+
+    public static class Builder {
+
+        private Cart cart;
+
+        public Builder() {
+            cart = new Cart();
+        }
+
+        public Builder addId(int val) {
+            cart.id = val;
+            return this;
+        }
+
+        public Builder addTotal_price(double val) {
+            cart.total_price = val;
+            return this;
+        }
+
+        public Builder addCreated_at(int val) {
+            cart.created_at = val;
+            return this;
+        }
+
+        public Builder addUser_id(int val) {
+            cart.user_id = val;
+            return this;
+        }
+
+        public Builder addShipping_price(double val) {
+            cart.shipping_price = val;
+            return this;
+        }
+
+        public Builder addCoupon(int val) {
+            cart.coupon = val;
+            return this;
+        }
+
+        public Builder addCheckout_step(String val) {
+            cart.checkout_step = val;
+            return this;
+        }
+
+        public Builder addCityFrom(String val) {
+            cart.cityFrom = val;
+            return this;
+        }
+
+        public Builder addCityTo(String val) {
+            cart.cityTo = val;
+            return this;
+        }
+
+        public Builder addTypeDeliver(String val) {
+            cart.typeDeliver = val;
+            return this;
+        }
+
+        public Builder addCount(int val) {
+            cart.count = val;
+            return this;
+        }
+
+        public Builder addWeight(int val) {
+            cart.weight = val;
+            return this;
+        }
+
+        public Builder addLenght(int val) {
+            cart.length = val;
+            return this;
+        }
+
+        public Builder addWidth(int val) {
+            cart.width = val;
+            return this;
+        }
+
+        public Builder addHeight(int val) {
+            cart.height = val;
+            return this;
+        }
+
+        public Builder addDistance(int val) {
+            cart.distance = val;
+            return this;
+        }
+
+        public Cart build() {
+            return cart;
+        }
+    }
 
     public int getDistance() {
         return distance;

@@ -15,63 +15,6 @@
     <script type="text/javascript" src="ownscript.js"></script>
 </head>
 <body>
-<%--<script>
-    $(function() {
-
-        $("#id_delivery_register").click(function () {
-
-
-            var text1 = $('#username').val();
-            var text2 = $('#email').val();
-            var text3 = $('#password').val();
-            var text4 = $('#password_confirm').val();
-            var text5 = "off";
-
-
-            if($('#flexCheckDefault').prop('checked')){
-                text5 = "on";
-            }
-            var text6 = $('#lang').val();
-
-            $.ajax({
-                url: '/DeliveryCompany/registration',
-                type: 'POST',
-                data: {"username": text1, "email": text2, "password": text3, "password_confirm": text4, "lang": text6},
-                success: function (data) {
-
-                    if (data != "stop") {
-
-/*
-                        if (text5 == "on") {
-
-                            $.ajax({
-                                url: '/bookstore/sendmailuserregister',
-                                type: 'POST',
-                                data: {"email": text2},
-                                success: function (data) {
-
-
-                                },
-                                failure: function (data) {
-
-                                }
-                            });
-                        }*/
-
-
-
-                        window.location.replace("http://localhost:8080/DeliveryCompany/showdelivery");
-                    }
-
-                },
-                failure: function (data) {
-
-                }
-            });
-
-        });
-    });
-</script>--%>
 <table align="center"><tr><td>
     <fieldset>
         <div id="legend">

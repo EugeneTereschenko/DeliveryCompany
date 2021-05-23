@@ -39,12 +39,6 @@
 
             <%
 
-
-          javax.servlet.http.Cookie cookie = new javax.servlet.http.Cookie("cartproc", "0");
-
-          response.addCookie(cookie);
-
-
           int cartproc = 0;
           Cookie[] cookies = request.getCookies();
           for (int i = 0; i < cookies.length; i++) {
@@ -89,8 +83,7 @@
           <jsp:include page="rate.jsp" />
           <% } %>
 
-
-
+      </div>
       <%--"2 of 1"--%>
       <div class="col-md-3">
           <%--2 of 2--%>
@@ -104,17 +97,6 @@
           <%--"2 of 3"--%>
           <%--<jsp:include page="shopcart.jsp" />--%>
       </div>
-    </div>
-    <div class="row">
-        <div class="col-md-6">
-          <%--  3 of 1--%>
-        </div>
-        <div class="col-md-3">
-           <%-- 3 of 2--%>
-        </div>
-        <div class="col-md-2">
-          <%--  3 of 3--%>
-        </div>
     </div>
   </div>
 

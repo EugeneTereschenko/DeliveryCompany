@@ -13,10 +13,7 @@ import org.json.JSONObject;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
+import javax.servlet.http.*;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
@@ -109,7 +106,7 @@ public class StoreDeliveryServlet extends HttpServlet {
 
         JSONObject json = new JSONObject();
         json.put("cartid", cartid);
-        json.put("distanceBetween", (int) rateDeliveryCount.countRate(temp));
+        json.put("distanceBetween", (int) rateDeliveryCount.getDistanceBetween());
         json.put("time", "00:00");
         json.put("shippingprice", (int) rateDeliveryCount.getShippingprice());
         json.put("namecityFrom", rateDeliveryCount.citysFrom.getName());
@@ -183,6 +180,12 @@ public class StoreDeliveryServlet extends HttpServlet {
             logger.info("Complete");
             List<Cityscoordinate> cityscoordinates = ratedeliveryDAO.findAllCitescoordinates();
             session.setAttribute("cityscoordinates", cityscoordinates);
+            Cookie cookie=new Cookie("cartproc", "0");
+            cookie.setMaxAge(1800);
+            response.addCookie(cookie);
+
+
+
             RequestDispatcher requestDispatcher = request
                     .getRequestDispatcher("/index.jsp");
             requestDispatcher.forward(request, response);

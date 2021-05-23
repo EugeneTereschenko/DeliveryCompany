@@ -5,20 +5,20 @@ import java.util.Date;
 public class Address {
 
 
-    public int id;
-    public String address_type;
-    public String first_name;
-    public String last_name;
-    public String address;
-    public String city;
-    public int zip;
-    public String country;
-    public String phone;
-    public int user_id;
-    public int checkbox_id;
-    public int delivery_id;
-    public Date created_at;
-    public Date update_at;
+    private int id;
+    private String address_type;
+    private String first_name;
+    private String last_name;
+    private String address;
+    private String city;
+    private int zip;
+    private String country;
+    private String phone;
+    private int user_id;
+    private int checkbox_id;
+    private int delivery_id;
+    private Date created_at;
+    private Date update_at;
 
 
     public int getDelivery_id() {

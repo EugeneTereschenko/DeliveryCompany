@@ -42,9 +42,6 @@ $(document).ready(function(){
 
                 console.log(id);
                 $("#TextBoxDiv" + id).remove();
-
-                // alert(data);
-
             },
             failure: function (data) {
 
@@ -72,7 +69,6 @@ $(document).ready(function(){
                 console.log(data);
 
                 $('#textcount' + id).text(textcount);
-                // alert(data);
 
             },
             failure: function (data) {
@@ -102,7 +98,6 @@ $(document).ready(function(){
                 console.log(data);
 
                 $('#textcount' + id).text(textcount);
-                // alert(data);
 
             },
             failure: function (data) {
@@ -117,24 +112,20 @@ $(document).ready(function(){
 
     $(".pdfreport").click(function () {
 
-        alert(this.id);
         console.log("test");
 
 
         var url = "http://localhost:8080/createpdfdoc?cartid=" + this.id;
 
-        //window.open.replace("http://localhost:8080/bookstore/createpdfdoc?cartid=" + );
         window.open(url, '_blank');
     });
 
     $("#id_button").click(function () {
-        // alert("help me");
         window.location.replace("http://localhost:8080/logout");
 
     });
 
     $("#id_proceed_payment").click(function () {
-        //document.cookie =  "cartid=" + data + ";";
         document.cookie =  "cartproc=1;";
         window.location.replace("http://localhost:8080/showdelivery");
     });
@@ -166,7 +157,6 @@ $(document).ready(function(){
                 console.log(data);
 
                 sendFlagaddress = 1;
-                // alert(data);
 
             },
             failure: function (data) {
@@ -174,7 +164,6 @@ $(document).ready(function(){
             }
         });
 
-        //var paymentMethod = $('#paymentMethod').val();
         var paymentMethod;
 
         console.log()
@@ -187,13 +176,13 @@ $(document).ready(function(){
 
         if(document.getElementById('credit').checked) {
             paymentMethod = "credit";
-            alert(paymentMethod);
+
         }else if(document.getElementById('debit').checked) {
             paymentMethod = "debit";
-            alert(paymentMethod);
+
         }else if(document.getElementById('paypal').checked){
             paymentMethod = "paypal";
-            alert(paymentMethod);
+
         }
 
 
@@ -204,11 +193,7 @@ $(document).ready(function(){
             data: {"paymentMethod": paymentMethod, "credname": credname, "crednumber": crednumber, "credexpiration": credexpiration, "credcvv": credcvv },
             success: function (data) {
                 console.log(data);
-
-
                 sendFlagcard = 1;
-
-                // alert(data);
 
             },
             failure: function (data) {
@@ -230,8 +215,6 @@ $(document).ready(function(){
                     document.cookie =  "cartproc=0;";
                     window.location.replace("http://localhost:8080/showdelivery");
                 }
-
-                // alert(data);
 
             },
             failure: function (data) {
@@ -265,26 +248,6 @@ $(document).ready(function(){
             success: function (data) {
 
                 if (data != "stop") {
-
-                    /*
-                                            if (text5 == "on") {
-
-                                                $.ajax({
-                                                    url: '/bookstore/sendmailuserregister',
-                                                    type: 'POST',
-                                                    data: {"email": text2},
-                                                    success: function (data) {
-
-
-                                                    },
-                                                    failure: function (data) {
-
-                                                    }
-                                                });
-                                            }*/
-
-
-
                     window.location.replace("http://localhost:8080/showdelivery");
                 }
 
@@ -311,7 +274,6 @@ $(document).ready(function(){
             success: function (data) {
                 console.log(data);
 
-                // alert(data);
 
                 if (data != "stop") {
                     window.location.replace("http://localhost:8080/showdelivery");
@@ -374,10 +336,7 @@ $(document).ready(function(){
                 }
             },
             success: function (data) {
-                // alert('success'+data);
                 console.log(data);
-                // $("#sentstatus_edit").html(data.deliveryprice.toString());
-                //$("#sentstatus_edit").html(data.toString());
 
 
                 $('<div/>',{'id':'TextBoxDiv' + data.cartid })
@@ -410,8 +369,6 @@ $(document).ready(function(){
             },
             failure: function (data) {
                 console.log(data);
-                // alert(data);
-                //  $("#sentstatus_edit").html("error");
             }
         });
 
@@ -458,15 +415,14 @@ $(document).ready(function(){
                 }
             },
             success: function (data) {
-                // alert('success'+data);
                 console.log(data);
-                // $("#sentstatus_edit").html(data.deliveryprice.toString());
-                $("#sentstatus_edit").html(data.toString());
+                console.log('Price: ' + data.toString() + ' $');
+                $("#sentstatus_edit").html("Price: " + data.toString() + " $");
 
             },
             failure: function (data) {
                 console.log(data);
-                // alert(data);
+
                 $("#sentstatus_edit").html("error");
             }
         });

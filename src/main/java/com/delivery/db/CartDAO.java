@@ -134,25 +134,25 @@ public class CartDAO {
      * @return
      * @throws ClassNotFoundException
      */
+//int user_id, double total_price, double shipping_price, String checkout_step, String cityFrom, String cityTo, String typeDeliver, int count, int weight, int length, int width, int height, int distance
 
+    public Cart insertCart(Cart cart) throws ClassNotFoundException {
 
-    public Cart insertCart(int user_id, double total_price, double shipping_price, String checkout_step, String cityFrom, String cityTo, String typeDeliver, int count, int weight, int length, int width, int height, int distance) throws ClassNotFoundException {
-        Cart cart = null;
         Class.forName("com.mysql.cj.jdbc.Driver");
         try (Connection con = DriverManager.getConnection(URL); PreparedStatement prstatement = con.prepareStatement(SQL_INSERT_CART, Statement.RETURN_GENERATED_KEYS)) {
-            prstatement.setInt(1, user_id);
-            prstatement.setDouble(2, total_price);
-            prstatement.setDouble(3, shipping_price);
-            prstatement.setString(4, checkout_step);
-            prstatement.setString(5, cityFrom);
-            prstatement.setString(6, cityTo);
-            prstatement.setString(7, typeDeliver);
-            prstatement.setInt(8, count);
-            prstatement.setInt(9, weight);
-            prstatement.setInt(10, length);
-            prstatement.setInt(11, width);
-            prstatement.setInt(12, height);
-            prstatement.setInt(13, distance);
+            prstatement.setInt(1, cart.getUser_id());
+            prstatement.setDouble(2, cart.getTotal_price());
+            prstatement.setDouble(3, cart.getShipping_price());
+            prstatement.setString(4, cart.getCheckout_step());
+            prstatement.setString(5, cart.getCityFrom());
+            prstatement.setString(6, cart.getCityTo());
+            prstatement.setString(7, cart.getTypeDeliver());
+            prstatement.setInt(8, cart.getCount());
+            prstatement.setInt(9, cart.getWeight());
+            prstatement.setInt(10, cart.getLength());
+            prstatement.setInt(11, cart.getWeight());
+            prstatement.setInt(12, cart.getHeight());
+            prstatement.setInt(13, cart.getDistance());
             if (prstatement.executeUpdate() > 0) {
                 ResultSet result = prstatement.getGeneratedKeys();
                 cart = new Cart();
