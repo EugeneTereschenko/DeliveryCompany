@@ -199,13 +199,17 @@ public class AuthenticationServlet extends HttpServlet {
         String action = request.getServletPath();
 
 
+        if (action.equals("/logout")){
+            logoutUser(request, response);
+        }
+        /*
         switch (action) {
             case "/logout":
                 logoutUser(request, response);
                 break;
             default:
                 break;
-        }
+        }*/
     }
 
     private void logoutUser(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

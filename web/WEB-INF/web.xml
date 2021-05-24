@@ -74,6 +74,8 @@
         <url-pattern>/authentication</url-pattern>
     </servlet-mapping>
 
+
+
     <servlet>
         <servlet-name>CheckOutServlet</servlet-name>
         <servlet-class>com.delivery.CheckOutServlet</servlet-class>
@@ -131,6 +133,23 @@
     <servlet-mapping>
         <servlet-name>UserViewServlet</servlet-name>
         <url-pattern>/showusers</url-pattern>
+    </servlet-mapping>
+
+
+
+    <servlet>
+        <servlet-name>CartViewServlet</servlet-name>
+        <servlet-class>com.delivery.CartViewServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>CartViewServlet</servlet-name>
+        <url-pattern>/showcarts</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>CartViewServlet</servlet-name>
+        <url-pattern>/updateorder</url-pattern>
     </servlet-mapping>
 
 </web-app>

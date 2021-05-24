@@ -151,7 +151,7 @@ public class UserDAO{
      * @throws ClassNotFoundException
      */
 
-    public User checkUserbyId(int id) throws ClassNotFoundException {
+    public  User checkUserbyId(int id) throws ClassNotFoundException {
         User user = null;
         Class.forName("com.mysql.cj.jdbc.Driver");
         try (Connection con = DriverManager.getConnection(URL); PreparedStatement prstatement = con.prepareStatement(SQL_FIND_USER_BY_ID)) {

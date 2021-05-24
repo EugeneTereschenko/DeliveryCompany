@@ -54,7 +54,7 @@
 
         <div class="control-group">
             <p class="help-block">
-                <a href="/DeliveryCompany/registration.jsp">Registration</a>
+                <a href="/registration.jsp">Registration</a>
             </p>
         </div>
     </fieldset>

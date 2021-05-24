@@ -63,6 +63,11 @@ public class StoreDeliveryServlet extends HttpServlet {
 
         String action = request.getServletPath();
 
+        if (action.equals("/showdelivery")) {
+            showDelivery((HttpServletRequest) request, response);
+        }
+
+        /*
         switch(action)
         {
             case "/showdelivery":
@@ -70,7 +75,7 @@ public class StoreDeliveryServlet extends HttpServlet {
                 break;
             default:
                 break;
-        }
+        }*/
 
     }
 

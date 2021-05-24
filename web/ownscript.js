@@ -22,7 +22,10 @@ $(document).ready(function(){
         window.location.replace("http://localhost:8080/showusers");
     });
 
-
+    $("#id_idcartsitemy").click(function () {
+        console.log("test");
+        window.location.replace("http://localhost:8080/showcarts");
+    });
 
 
     // shop cart

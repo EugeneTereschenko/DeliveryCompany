@@ -75,6 +75,14 @@ public class UserViewServlet extends HttpServlet {
         String action = request.getServletPath();
 
 
+        if (action.equals("/showusers"))
+
+            try {
+                showusers(request, response);
+            } catch (ClassNotFoundException e) {
+                e.printStackTrace();
+            }
+       /*
         switch(action) {
             case "/showusers":
                 try {
@@ -85,7 +93,7 @@ public class UserViewServlet extends HttpServlet {
                 break;
             default:
                 break;
-        }
+        }*/
 
 
     }

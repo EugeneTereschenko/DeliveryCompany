@@ -42,6 +42,7 @@
 
     String exit = properties.getProperty("fieldExit");
     String usersitemy = properties.getProperty("fieldUser");
+    String cartsitemy = properties.getProperty("fieldOrder");
 %>
 
 <div class="container mt-5 mb-5">
@@ -56,6 +57,7 @@
                     String role = (String) session.getAttribute("roleid");
                         if (role.equals("administrator")) {
                             out.println("<input type=\"button\" class=\"btn btn-primary btn-light btn-sm\" id=\"idusersitemy\" value=\"" + usersitemy + "\" />");
+                            out.println("<input type=\"button\" class=\"btn btn-primary btn-light btn-sm\" id=\"id_idcartsitemy\" value=\"" + cartsitemy + "\" />");
                         }
 
                     %>

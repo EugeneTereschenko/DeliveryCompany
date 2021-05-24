@@ -109,13 +109,6 @@ public class CheckOutServlet extends HttpServlet {
             out.flush();
             out.close();
 
-/*            RequestDispatcher requestDispatcher = request
-                    .getRequestDispatcher("./checkout/delivery.jsp");
-            requestDispatcher.forward(request, response);*/
-        } else {/*
-            RequestDispatcher requestDispatcher = request
-                    .getRequestDispatcher("./checkout/address.jsp");
-            requestDispatcher.forward(request, response);*/
         }
 
 

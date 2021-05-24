@@ -47,7 +47,6 @@
                     if (name.equals("cartproc")) {
                         cartproc = Integer.parseInt(valueID);
                     }
-
                 }
 
                 System.out.println(cartproc);

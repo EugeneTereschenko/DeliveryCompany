@@ -29,6 +29,11 @@
                 <pattern>%d %p %C{1.} [%t] %m%n</pattern>
             </PatternLayout>
         </File>
+        <File name="File6" fileName="/home/yevhen/Java_Connect/DeliveryCompanyTemp3/DeliveryCompany/log/outputCartViewServlet.log">
+            <PatternLayout>
+                <pattern>%d %p %C{1.} [%t] %m%n</pattern>
+            </PatternLayout>
+        </File>
     </Appenders>
     <Loggers>
         <Root level="debug">
@@ -48,6 +53,9 @@
         </Logger>
         <Logger name="com.delivery.UserViewServlet" level="debug" additivity="false">
             <AppenderRef ref="File5"/>
+        </Logger>
+        <Logger name="com.delivery.CartViewServlet" level="debug" additivity="false">
+            <AppenderRef ref="File6"/>
         </Logger>
     </Loggers>
 </Configuration>
